@@ -90,18 +90,18 @@ module.exports = function(app){
 
         /**objetos quer me permite conectar no banco e maninpular as operações */
         var con = app.persistencia.connectionFactory;
-        var dao = new app.persistencia.pergunta_respostaDAO(con);
+        var dao = new app.persistencia.pergunta_respostaDao(con);
 
         /**
          * valida se os dados estão corretos conforme regra de negócio
          */
-        var service = new app.services.pergunta_respostaService();
-        response = service.validarDados(data);
-        if(!response.status){
-            resp.status(400);
-            resp.json({"message": response.message});   
-            return;
-        }
+       // var service = new app.services.pergunta_respostaService();
+        //response = service.validarDados(data);
+        //if(!response.status){
+            //resp.status(400);
+           // resp.json({"message": response.message});   
+          //  return;
+        //}
 
         /**função assíncrona, como não sabemos quanto tempo irá demorar a conexão com banco. 
          * É importante que as operações sejam assíncronas. O quer dizer que a função create
@@ -110,7 +110,9 @@ module.exports = function(app){
          * que é responsável por manipular o retorno da fução assíncrona. 
          */
         data.deletado = 0;
+        data.respostas = JSON.stringify(data.respostas);
         dao.create(data, function(exception, result){
+           
             if(exception){
 
                 /**

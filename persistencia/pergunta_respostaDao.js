@@ -1,7 +1,7 @@
 /**
  * class usuarioDAO responsável pelas operações com o banco de dados
  */
-class pergunta_respostaDAO{
+class pergunta_respostaDao{
     constructor(connection){
         this._con = connection;
     }
@@ -76,5 +76,5 @@ class pergunta_respostaDAO{
  * Expõem o módulo para outros módulos
  */
 module.exports = function(){
-    return pergunta_respostaDAO;
+    return pergunta_respostaDao;
 }
