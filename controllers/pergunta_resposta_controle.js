@@ -8,9 +8,9 @@ module.exports = function(app){
     /** GET /usuario
      *  rota que obtém lista de usuários (find all)
      */
-    app.get('/usuario', function(req, resp){
+    app.get('/pergunta_resposta', function(req, resp){
         var con = app.persistencia.connectionFactory;
-        var dao = new app.persistencia.pergunta_respostaDAO(con);
+        var dao = new app.persistencia.pergunta_respostaDao(con);
         dao.findAll(function(exception, result){
             if(exception){
                 resp.status(500);
@@ -46,7 +46,7 @@ module.exports = function(app){
     app.get('/pergunta_resposta/:id', function(req, resp){
         data = req.params;
         var con = app.persistencia.connectionFactory;
-        var dao = new app.persistencia.pergunta_respostaDAO(con);
+        var dao = new app.persistencia.pergunta_respostaDao(con);
 
         /**
          * função assíncrona para obter o usuário pelo id
@@ -84,7 +84,7 @@ module.exports = function(app){
     /** POST /usuario 
      *  rota que permite criar um novo usuário
     */
-    app.post('/pergunta_resposta_controle', function(req, resp){
+    app.post('/pergunta_resposta', function(req, resp){
         /**Propriedade que permite manipular o body da requisição */
         data = req.body;
 
@@ -153,7 +153,7 @@ module.exports = function(app){
         novo = req.body;
 
         var con = app.persistencia.connectionFactory;
-        var dao = new app.persistencia.pergunta_respostaDAO(con);
+        var dao = new app.persistencia.pergunta_respostaDao(con);
 
         /**
          * primeiro passo na alteraçaõ do usuário é buscar o usuário pelo id
@@ -223,7 +223,7 @@ module.exports = function(app){
     app.delete('/pergunta_resposta/:id', function(req, resp){
         dado = req.params;
         var con = app.persistencia.connectionFactory;
-        var dao = new app.persistencia.pergunta_respostaDAO(con);
+        var dao = new app.persistencia.pergunta_respostaDao(con);
 
         /**
          * primeira fase: buscar dados 

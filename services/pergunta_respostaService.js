@@ -6,9 +6,9 @@ class pergunta_respostaService{
      *  valida se os dados de usuário são válidos conforme regra de negócio
      * @param $data - dados do usuário 
      */
-/**
+
     validarDados($data){
-    
+        
         if(!data.pergunta){
             return {status: false, message: "nome Obrigatório"};
         }
@@ -28,7 +28,7 @@ class pergunta_respostaService{
    
     return {status: true};
     }
-*/    
+  
 }
 
 module.exports = function(){
