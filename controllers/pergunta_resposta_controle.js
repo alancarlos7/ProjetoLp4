@@ -95,13 +95,13 @@ module.exports = function(app){
         /**
          * valida se os dados estão corretos conforme regra de negócio
          */
-       // var service = new app.services.pergunta_respostaService();
-        //response = service.validarDados(data);
-        //if(!response.status){
-            //resp.status(400);
-           // resp.json({"message": response.message});   
-          //  return;
-        //}
+        var service = new app.services.pergunta_respostaService();
+        response = service.validarDados(data);
+        if(!response.status){
+            resp.status(400);
+           resp.json({"message": response.message});   
+            return;
+        }
 
         /**função assíncrona, como não sabemos quanto tempo irá demorar a conexão com banco. 
          * É importante que as operações sejam assíncronas. O quer dizer que a função create
@@ -184,9 +184,9 @@ module.exports = function(app){
              * os atributos que vieram na request (novo), desta forma, garantimos que um usuário existente está sendo alterado
              */
             antigo = result[0];
-            antigo.nome = novo.nome;
-            antigo.email = novo.email;
-            antigo.senha = novo.senha;
+            antigo.pergunta = novo.pergunta;
+            antigo.respostas = novo.respostas;
+            antigo.categoria = novo.categoria;
 
 
             /**

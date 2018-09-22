@@ -7,29 +7,32 @@ class pergunta_respostaService{
      * @param $data - dados do usuário 
      */
 
+
+     
     validarDados($data){
+
+
         
         if(!data.pergunta){
-            return {status: false, message: "nome Obrigatório"};
+            return {status: false, message: "Pergunta Obrigatória"};
         }
 
-        if(!data.alternativa){
-            return {status: false, message: "email Obrigatório"};
+        if(!data.respostas){
+            return {status: false, message: "Resposta Obrigatória"};
+       
         }
-
-        if(!data.resposta){
-            return {status: false, message: "senha Obrigatório"};
-        }
-
         if(!data.categoria){
-            return {status: false, message: "perfil Obrigatório"};
+            return {status: false, message: "Categoria Obrigatória"};
         }
-
-   
     return {status: true};
-    }
-  
+    
+
+
 }
+
+    }
+
+
 
 module.exports = function(){
     return pergunta_respostaService;
